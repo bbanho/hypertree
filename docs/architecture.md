@@ -1,0 +1,1 @@
+This document outlines the architecture of the Hypertree project.

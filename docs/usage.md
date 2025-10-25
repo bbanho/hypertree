@@ -1,0 +1,1 @@
+This document explains how to use the Hypertree assistant.
