@@ -84,3 +84,15 @@ Auto-documentação de sessões: modelo gera resumo Markdown de comandos executa
 Montar um esqueleto técnico (daemon Python + hook Hyprland + prompt pipeline + sandbox executor).
 
 
+## 6. Visão de Longo Prazo: Execução com BTRFS Snapshots
+
+Uma evolução para o mecanismo de execução segura (`sandbox executor`) é a utilização de snapshots do sistema de arquivos BTRFS. A ideia consiste em:
+
+1.  **Snapshot:** Antes de executar um comando sugerido pela IA, criar um snapshot BTRFS do subvolume relevante (ex: `/home` ou um subvolume de projetos).
+2.  **Execução:** Rodar o comando.
+3.  **Análise:** Fazer um `diff` entre o estado do sistema de arquivos pós-execução e o snapshot para identificar todas as modificações.
+4.  **Decisão:** Com base no `diff`, o agente (ou o usuário) pode aprovar as mudanças (mantendo o estado atual) ou rejeitá-las (fazendo rollback para o estado do snapshot).
+
+Esta abordagem oferece o mais alto nível de segurança, transformando o próprio sistema de arquivos em um sandbox e eliminando a necessidade de prever todas as consequências de um comando.
+
+
