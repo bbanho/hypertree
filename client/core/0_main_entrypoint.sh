@@ -13,8 +13,11 @@ for cmd in wl-paste wl-copy notify-send curl jq; do
   fi
 done
 
-# Pega o conteúdo do clipboard
-CLIP_CONTENT=$(wl-paste --no-newline)
+# Pega o conteúdo do clipboard (priorizando seleção primária)
+CLIP_CONTENT=$(wl-paste --primary --no-newline)
+if [ -z "$CLIP_CONTENT" ]; then
+    CLIP_CONTENT=$(wl-paste --no-newline)
+fi
 
 if [ -z "$CLIP_CONTENT" ]; then
     notify-send -u normal "Hypertree" "Clipboard vazio."

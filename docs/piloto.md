@@ -96,3 +96,15 @@ Uma evolução para o mecanismo de execução segura (`sandbox executor`) é a u
 Esta abordagem oferece o mais alto nível de segurança, transformando o próprio sistema de arquivos em um sandbox e eliminando a necessidade de prever todas as consequências de um comando.
 
 
+## 7. Visão de Longo Prazo: Agente Stateful e Dedução de Objetivo
+
+Para evoluir de um assistente reativo para um agente proativo e parceiro, o sistema precisará manter um estado e deduzir o objetivo do usuário a partir de uma sequência de interações. Isso envolve:
+
+1.  **Histórico de Conversação:** O servidor API precisará armazenar e gerenciar o histórico de prompts e respostas, talvez associado a um ID de sessão ou de projeto.
+2.  **Contexto Acumulado:** A cada nova interação, o cliente enviaria não apenas o novo contexto (seleção, janela, etc.), mas também um identificador de sessão.
+3.  **LLM Stateful:** O LLM seria promptado com o histórico recente e o novo contexto, permitindo que ele 'conecte os pontos' e infira o objetivo maior do usuário (ex: 'o usuário está depurando esta função', 'o usuário está tentando instalar esta biblioteca').
+4.  **Ações Proativas:** Com base no objetivo inferido, o agente poderia sugerir ações mais complexas ou até mesmo iniciar sequências de ferramentas automaticamente (com aprovação do usuário).
+
+Esta funcionalidade transformaria o Hypertree em um verdadeiro copiloto inteligente.
+
+
