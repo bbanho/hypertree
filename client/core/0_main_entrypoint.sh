@@ -13,10 +13,8 @@ for cmd in wl-paste wl-copy notify-send curl jq; do
   fi
 done
 
-# Pega o conteúdo do clipboard
+# Pega o conteúdo do clipboard (priorizando seleção primária)
 CLIP_CONTENT=$(wl-paste --primary --no-newline)
-
-# Se a seleção primária estiver vazia, tenta o clipboard principal
 if [ -z "$CLIP_CONTENT" ]; then
     CLIP_CONTENT=$(wl-paste --no-newline)
 fi
